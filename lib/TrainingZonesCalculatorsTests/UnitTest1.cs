@@ -86,8 +86,7 @@ namespace TheRainyCoders.Trainer.Lib.TrainingZones.Calculators.Tests
 
 
             TimeSpan cssSpan = TimeSpan.FromSeconds(css);
-
-            
+            this.output.WriteLine("CSS: {0}", cssSpan);          
 
             double onePercent = css / 100; 
 
