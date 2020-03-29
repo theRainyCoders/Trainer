@@ -1,8 +1,6 @@
 using System;
-using System.Diagnostics;
 using System.Globalization;
 using System.Text.RegularExpressions;
-using FluentAssertions;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -41,18 +39,18 @@ namespace TheRainyCoders.Trainer.Lib.TrainingZones.Calculators.Tests
             //paceInSecPerKm.Should().Be(271);
 
             var onePercent = paceInSecPerKm / 100D;
-            
+
             // below 100%
-            var regDlMin = paceInSecPerKm + (onePercent *  65);
+            var regDlMin = paceInSecPerKm + (onePercent * 65);
 
             // over 100%
             //var regDl = paceInSecPerKm - onePercent *  (100 + 10);
 
             var one = (int)Math.Truncate(regDlMin / 60);
             var two = (int)Math.Truncate(regDlMin % 60);
-            
-            var zoneOneMin = $"{one:D2}:{two:D2}"; 
-         }
+
+            var zoneOneMin = $"{one:D2}:{two:D2}";
+        }
 
         [Fact]
         public void SwimCss()
@@ -86,9 +84,9 @@ namespace TheRainyCoders.Trainer.Lib.TrainingZones.Calculators.Tests
 
 
             TimeSpan cssSpan = TimeSpan.FromSeconds(css);
-            this.output.WriteLine("CSS: {0}", cssSpan);          
+            this.output.WriteLine("CSS: {0}", cssSpan);
 
-            double onePercent = css / 100; 
+            double onePercent = css / 100;
 
             var rangeMin = TimeSpan.FromSeconds(onePercent * 122);
             var rangeMax = TimeSpan.FromSeconds(onePercent * 111);

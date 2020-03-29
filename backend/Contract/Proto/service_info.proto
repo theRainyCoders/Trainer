@@ -1,0 +1,20 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "TheRainyCoders.Trainer.Backend.Contract.ServiceInfo";
+package therainycoders.trainer.backend.contract.serviceinfo;
+
+import "google/protobuf/timestamp.proto";
+
+
+service ServiceInfoService {
+	rpc Info(ServiceInfoRequest) returns (ServiceInfoResponse);
+}
+
+message ServiceInfoRequest{
+}
+
+
+message ServiceInfoResponse {
+	string Version = 1; 
+	google.protobuf.Timestamp Started = 2;
+}

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace TheRainyCoders.Trainer.Backend.Services
+namespace TheRainyCoders.Trainer.Backend.Service
 {
     public static class Program
     {

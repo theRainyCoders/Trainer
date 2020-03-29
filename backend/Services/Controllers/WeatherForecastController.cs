@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Services;
+using System;
+using System.Linq;
 using TheRainyCoders.Trainer.Backend.Services.Application;
 
 namespace TheRainyCoders.Trainer.Backend.Services.Controllers
