@@ -8,6 +8,6 @@
         /// <summary>
         ///     Base path for all web API controllers.
         /// </summary>
-        public const string WebApiControllerBasePath = "api/[controller]";
+        public const string WebApiControllerBasePath = "api/v{v:apiVersion}/[controller]";
     }
 }

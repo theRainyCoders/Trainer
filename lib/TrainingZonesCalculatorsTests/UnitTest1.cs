@@ -52,6 +52,47 @@ namespace TheRainyCoders.Trainer.Lib.TrainingZones.Calculators.Tests
             var zoneOneMin = $"{one:D2}:{two:D2}";
         }
 
+          [Fact]
+        public void PandPRunPaceAns()
+        {
+            //var paceAns = "00:04:31";
+            var paceAns = "00:04:25";
+            
+            var paceAnsTimeSpan = TimeSpan.Parse(paceAns, CultureInfo.InvariantCulture);
+          
+
+            var paceAnsInSeconds = paceAnsTimeSpan.TotalSeconds;
+
+
+            var rangeMin = TimeSpan.FromSeconds(paceAnsInSeconds / 0.48);
+            var rangeMax = TimeSpan.FromSeconds(paceAnsInSeconds / 0.58);
+
+            rangeMin = TimeSpan.FromSeconds(paceAnsInSeconds / 0.59);
+            rangeMax = TimeSpan.FromSeconds(paceAnsInSeconds / 0.76);
+
+            this.output.WriteLine("Extensiver Dauerlauf (DL ext. / GA1) 59-76%: {0} - {1}", rangeMin, rangeMax);
+
+            rangeMin = TimeSpan.FromSeconds(paceAnsInSeconds / 0.77);
+            rangeMax = TimeSpan.FromSeconds(paceAnsInSeconds / 0.90);
+
+            this.output.WriteLine("intensiver Dauerlauf (DL int / GA2) 77-90%: {0} - {1}", rangeMin, rangeMax);
+
+            rangeMin = TimeSpan.FromSeconds(paceAnsInSeconds / 0.91);
+            rangeMax = TimeSpan.FromSeconds(paceAnsInSeconds / 1.04);
+
+            this.output.WriteLine("Tempodauerlauf (DL.-Tempo / EB) 91-104%: {0} - {1}", rangeMin, rangeMax);
+
+            rangeMin = TimeSpan.FromSeconds(paceAnsInSeconds / 1.05);
+            rangeMax = TimeSpan.FromSeconds(paceAnsInSeconds / 1.23);
+
+            this.output.WriteLine("Extensives Tempotraining (TT ext. / WSA) 105-123%: {0} - {1}", rangeMin, rangeMax);
+
+            rangeMin = TimeSpan.FromSeconds(paceAnsInSeconds / 1.20);
+
+            this.output.WriteLine("Intensives Tempotraining (TT int.) >= 120%: {0}", rangeMin);
+        }
+
+
         [Fact]
         public void SwimCss()
         {

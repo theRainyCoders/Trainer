@@ -1,6 +1,6 @@
 using System;
 
-namespace Services
+namespace TheRainyCoders.Trainer.Backend.Contract.WebApi
 {
     public class WeatherForecast
     {

@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Services;
-using System;
+﻿using System;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using TheRainyCoders.Trainer.Backend.Contract.WebApi;
 using TheRainyCoders.Trainer.Backend.Services.Application;
 
-namespace TheRainyCoders.Trainer.Backend.Services.Controllers
+namespace TheRainyCoders.Trainer.Backend.Service.Controllers.WebApi
 {
+    [ApiVersion("1.0")]
     [ApiController]
     [Route(Settings.WebApiControllerBasePath)]
     public class WeatherForecastController : ControllerBase

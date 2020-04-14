@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="Proto\service_info.proto" />
+    <Protobuf Include="Grpc\Proto\service_info.proto" />
   </ItemGroup>
 
 </Project>
