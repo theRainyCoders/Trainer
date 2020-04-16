@@ -52,20 +52,60 @@ namespace TheRainyCoders.Trainer.Lib.TrainingZones.Calculators.Tests
             var zoneOneMin = $"{one:D2}:{two:D2}";
         }
 
+        [Fact]
+        public void PandPHfAns()
+        {
+            var hfAns = 174;
+            this.output.WriteLine("Herzfrequennz Anaerobe Schwelle (HfANS): {0}", hfAns);
+
+
+            var rangeMin = 65 * hfAns / 100;
+            var rangeMax = 74 * hfAns / 100;
+
+            this.output.WriteLine("Regenerativer Dauerlauf (Rekom) 65-74%: {0} - {1}", rangeMin, rangeMax);
+
+        rangeMin = 75 * hfAns / 100;
+        rangeMax = 84 * hfAns / 100;
+            this.output.WriteLine("Extensiver Dauerlauf (DL ext. / GA1) 75-84%: {0} - {1}", rangeMin, rangeMax);
+
+            rangeMin = 85 * hfAns / 100;
+            rangeMax = 94 * hfAns / 100;
+            this.output.WriteLine("intensiver Dauerlauf (DL int / GA2) 85-94%: {0} - {1}", rangeMin, rangeMax);
+
+            rangeMin = 95 * hfAns / 100;
+            rangeMax = 102 * hfAns / 100;
+            
+            this.output.WriteLine("Tempodauerlauf (DL.-Tempo / EB) 95-102%: {0} - {1}", rangeMin, rangeMax);
+
+            rangeMin = 103 * hfAns / 100;
+            rangeMax = 120 * hfAns / 100;
+
+            this.output.WriteLine("Extensives Tempotraining (TT ext. / WSA) 102-120%: {0} - {1}", rangeMin, rangeMax);
+
+            rangeMin = 120 * hfAns / 100;
+            
+            this.output.WriteLine("Intensives Tempotraining (TT int.) >= 120%: {0}", rangeMin);
+
+        }
+
           [Fact]
         public void PandPRunPaceAns()
         {
             //var paceAns = "00:04:31";
-            var paceAns = "00:04:25";
+            //var paceAns = "00:04:25";
+            var paceAns = "00:04:14";
             
             var paceAnsTimeSpan = TimeSpan.Parse(paceAns, CultureInfo.InvariantCulture);
           
+            this.output.WriteLine("Pace Anaerobe Schwelle (PaceANS): {0}", paceAnsTimeSpan);
 
             var paceAnsInSeconds = paceAnsTimeSpan.TotalSeconds;
 
 
             var rangeMin = TimeSpan.FromSeconds(paceAnsInSeconds / 0.48);
             var rangeMax = TimeSpan.FromSeconds(paceAnsInSeconds / 0.58);
+
+            this.output.WriteLine("Regenerativer Dauerlauf (Rekom) 48-58%: {0} - {1}", rangeMin, rangeMax);
 
             rangeMin = TimeSpan.FromSeconds(paceAnsInSeconds / 0.59);
             rangeMax = TimeSpan.FromSeconds(paceAnsInSeconds / 0.76);
