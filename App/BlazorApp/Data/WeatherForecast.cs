@@ -1,6 +1,6 @@
 using System;
 
-namespace Trainer.Data
+namespace TheRainyCoders.Trainer.BlazorApp.Data
 {
     public class WeatherForecast
     {

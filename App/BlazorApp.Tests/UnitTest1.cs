@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace Trainer.Tests
+namespace TheRainyCoders.Trainer.BlazorApp.Tests
 {
     public class UnitTest1
     {

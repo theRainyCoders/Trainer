@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Trainer
+namespace TheRainyCoders.Trainer.BlazorApp
 {
     public class Program
     {
