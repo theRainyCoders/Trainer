@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trainer.Tests", "BlazorApp.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commonplace", "..\External\Commonplace\Commonplace\Commonplace.csproj", "{E750C35A-0698-4BB7-92CB-65FADE9E1EC2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commonplace.Tests", "..\External\Commonplace\Commonplace.Tests\Commonplace.Tests.csproj", "{95405023-777E-4E33-87FC-D85B2B154986}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{E750C35A-0698-4BB7-92CB-65FADE9E1EC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E750C35A-0698-4BB7-92CB-65FADE9E1EC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E750C35A-0698-4BB7-92CB-65FADE9E1EC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95405023-777E-4E33-87FC-D85B2B154986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95405023-777E-4E33-87FC-D85B2B154986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95405023-777E-4E33-87FC-D85B2B154986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95405023-777E-4E33-87FC-D85B2B154986}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
