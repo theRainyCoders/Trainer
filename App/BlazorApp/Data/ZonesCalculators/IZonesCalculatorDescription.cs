@@ -1,18 +1,11 @@
 ﻿namespace TheRainyCoders.Trainer.BlazorApp.Data.ZonesCalculators
 {
-    using System;
     using System.Collections.Generic;
 
-    internal interface IZonesCalculatorDescription
+    using TheRainyCoders.Commonplace.Data;
+
+    internal interface IZonesCalculatorDescription : IReadonlyDescribe
     {
-        Guid Id { get; }
-
-        string Name { get; }
-
-        IReadOnlyCollection<ZoneCalculatorInputValueDescription> InputValueDescriptions
-        {
-            get;
-        }
-        
+        IReadOnlyCollection<ZoneCalculatorInputValueDescription> InputValueDescriptions { get; }
     }
 }
