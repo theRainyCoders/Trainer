@@ -1,6 +1,90 @@
 ﻿@page "/zones-calculator"
+@using TheRainyCoders.Trainer.BlazorApp.Data.ZonesCalculators
+@using System.Reflection.Metadata
+@using TheRainyCoders.Trainer.BlazorApp.Data.ZonesCalculators.Calculators
 <h3>HF - ZonesCalculator</h3>
 
-@code {
 
+<div class="form-group">
+    <label for="calculatorList">Calculator:</label>
+    <select id="calculatorList" class="form-control" @onchange="OnSelectCalculator">
+        <option></option>
+        <option value="Power&Pace - Heart Rate by max. HR">1</option>
+        <option value="Power&Pace - Heart Rate by max. ANS HR">2</option>
+    </select>
+</div>
+ 
+
+@foreach (var inputValueDescription in calculator.Description.InputValueDescriptions)
+{
+    <div class="form-group">
+        <label for="@inputValueDescription.Id">@inputValueDescription.Name:</label>
+        <input class="form-control" placeholder="@inputValueDescription.Name" id="@inputValueDescription.Id" @bind="@inputValues[inputValueDescription.Id]" />
+    </div>
+}
+
+<button class="btn btn-primary" @onclick="CalculateZones">Calculate</button>
+
+@*<div>    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Zone</th>
+                <th>HF Range</th>
+            </tr>            
+        </thead>
+        <tbody>
+            <tr>
+                <td>Zone 1</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Zone 2</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <dl class="row">
+        <dt class="col-sm-3">Zone 1</dt>
+        <dd class="col-sm-9">5-7</dd>
+
+        <dt class="col-sm-3">Zone 2</dt>
+        <dd class="col-sm-9">9-10</dd>
+    </dl>
+</div>*@
+
+@code {
+    
+    IZonesCalculator calculator ;
+
+    private int? pulse;
+    private string selectedCalculator;
+
+    Dictionary<Guid, string> inputValues;
+
+    private void CalculateZones()
+    {
+        
+    }
+
+    private void OnSelectCalculator(ChangeEventArgs eventArgs)
+    {
+
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        this.calculator = new PowerAndPaceRunMaxHR();
+        this.inputValues = new Dictionary<Guid, string>();
+
+
+        foreach (var zoneCalculatorInputValueDescription in this.calculator.Description.InputValueDescriptions)
+        {
+            this.inputValues.Add(zoneCalculatorInputValueDescription.Id, null);
+        }
+
+        //await Task.FromResult();
+    }
 }
