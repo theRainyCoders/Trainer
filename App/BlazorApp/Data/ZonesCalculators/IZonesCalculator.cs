@@ -9,6 +9,7 @@
             get;
         }
 
+
         ZonesCalculatorResult Calculate(ZonesCalculatorInput input);
     }
 }

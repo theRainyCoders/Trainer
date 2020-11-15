@@ -7,9 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trainer", "BlazorApp\Traine
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trainer.Tests", "BlazorApp.Tests\Trainer.Tests.csproj", "{3206D960-2EEA-4CD2-8BD1-2EE615FFAB53}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commonplace", "..\External\Commonplace\Commonplace\Commonplace.csproj", "{E750C35A-0698-4BB7-92CB-65FADE9E1EC2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{94540381-8F8A-453E-AFE2-51921E05CCC3}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		CompanySettings.DotSettings = CompanySettings.DotSettings
+		Trainer.sln.DotSettings = Trainer.sln.DotSettings
+	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commonplace.Tests", "..\External\Commonplace\Commonplace.Tests\Commonplace.Tests.csproj", "{95405023-777E-4E33-87FC-D85B2B154986}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{39FDF96C-A877-44C4-911B-324D17B2126C}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.config = .nuget\NuGet.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +33,6 @@ Global
 		{3206D960-2EEA-4CD2-8BD1-2EE615FFAB53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3206D960-2EEA-4CD2-8BD1-2EE615FFAB53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3206D960-2EEA-4CD2-8BD1-2EE615FFAB53}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E750C35A-0698-4BB7-92CB-65FADE9E1EC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E750C35A-0698-4BB7-92CB-65FADE9E1EC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E750C35A-0698-4BB7-92CB-65FADE9E1EC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E750C35A-0698-4BB7-92CB-65FADE9E1EC2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95405023-777E-4E33-87FC-D85B2B154986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95405023-777E-4E33-87FC-D85B2B154986}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95405023-777E-4E33-87FC-D85B2B154986}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95405023-777E-4E33-87FC-D85B2B154986}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

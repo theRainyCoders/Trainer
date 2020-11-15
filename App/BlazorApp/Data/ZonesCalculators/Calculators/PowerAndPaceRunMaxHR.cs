@@ -23,6 +23,7 @@
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             throw new System.NotImplementedException();
+            // todo remove nuget submodule to commonplaceö
         }
 
         public IZonesCalculatorDescription Description => description;
