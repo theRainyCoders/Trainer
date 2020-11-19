@@ -9,8 +9,10 @@
     <label for="calculatorList">Calculator:</label>
     <select id="calculatorList" class="form-control" @onchange="OnSelectCalculator">
         <option></option>
-        <option value="Power&Pace - Heart Rate by max. HR" title="5" />
-        <option value="Power&Pace - Heart Rate by max. ANS HR">2</option>
+        @foreach (var calculator in calculatorFactory.GetAvailableCalculators())
+        {
+            <option value="@calculator.Id">@calculator.Name</option>
+        }
     </select>
 </div>
  
@@ -56,7 +58,9 @@
 </div>*@
 
 @code {
-    
+
+    IZonesCalculatorFactory calculatorFactory;
+
     IZonesCalculator calculator ;
 
     private int? pulse;
@@ -76,6 +80,8 @@
 
     protected override async Task OnInitializedAsync()
     {
+        this.calculatorFactory = new ZonesCalculatorFactory();
+
         this.calculator = new RunMaximumHeartRateZonesCalculator();
         this.inputValues = new Dictionary<Guid, string>();
 
