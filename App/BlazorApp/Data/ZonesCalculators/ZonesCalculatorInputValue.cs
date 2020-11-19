@@ -5,7 +5,7 @@
     /// <summary>
     ///     Class that represents a zones calculator input value.
     /// </summary>
-    internal struct ZonesCalculatorInput
+    internal struct ZonesCalculatorInputValue
     {
         /// <summary>
         ///     Gets or sets the id.

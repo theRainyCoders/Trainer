@@ -8,7 +8,7 @@
     /// <summary>
     ///     Class that represents a zones calculator description.
     /// </summary>
-    internal struct ZonesCalculatorDescription : IReadonlyDescribe
+    internal readonly struct ZonesCalculatorDescription : IReadonlyDescribe
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="ZonesCalculatorDescription" /> struct.

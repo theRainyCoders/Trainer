@@ -32,9 +32,21 @@
         }
 
         /// <inheritdoc />
-        public ZonesCalculatorResult Calculate(ZonesCalculatorInput input)
+        public ZonesCalculatorResult Calculate(IReadOnlyCollection<ZonesCalculatorInputValue> inputValues)
         {
-            throw new NotImplementedException();
+            var zoneOne = new ZonesCalculatorZone
+                              {
+                                  Id = Guid.NewGuid(),
+                                  Name = "DLext",
+                                  Minimum = 0,
+                                  Maximum = 1,
+                                  Description = "Info desc.",
+                              };
+
+            var result = new ZonesCalculatorResult();
+            result.Zones.Add(zoneOne);
+
+            return result;
         }
 
         /// <summary>
@@ -50,8 +62,7 @@
             descriptionBuilder
                 .AddDescription(
                     Guid.Parse("{B08E13BD-EA30-446D-A105-3206A0C73DB9}"),
-                    "Power&Pace - Run - Maximum Heart Rate")
-                .AddInputValueDescription(
+                    "Power&Pace - Run - Maximum Heart Rate").AddInputValueDescription(
                     Guid.Parse("{B0C6D2A6-65FB-4954-B845-208180BECA08}"),
                     "Maximum Heart Rate");
 

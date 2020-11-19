@@ -1,9 +1,7 @@
 ﻿@page "/zones-calculator"
 @using TheRainyCoders.Trainer.BlazorApp.Data.ZonesCalculators
-@using System.Reflection.Metadata
-@using TheRainyCoders.Trainer.BlazorApp.Data.ZonesCalculators.Calculators.PowerAndPace
-<h3>HF - ZonesCalculator</h3>
 
+<h3>Zone Calculators</h3>
 
 <div class="form-group">
     <label for="calculatorList">Calculator:</label>
@@ -15,82 +13,96 @@
         }
     </select>
 </div>
- 
 
-@foreach (var inputValueDescription in calculator.Description.InputValueDescriptions)
+@if (selectedCalculator != null)
 {
-    <div class="form-group">
-        <label for="@inputValueDescription.Id">@inputValueDescription.Name:</label>
-        <input class="form-control" placeholder="@inputValueDescription.Name" id="@inputValueDescription.Id" @bind="@inputValues[inputValueDescription.Id]" />
+    @foreach (var inputValueDescription in selectedCalculator.Description.InputValueDescriptions)
+    {
+        <div class="form-group">
+            <label for="@inputValueDescription.Id">@inputValueDescription.Name:</label>
+            <input class="form-control" placeholder="@inputValueDescription.Name" id="@inputValueDescription.Id" title="@inputValueDescription.Description" @bind="@calculatorInputValues[inputValueDescription.Id]"/>
+        </div>
+    }
+
+    <button class="btn btn-primary" @onclick="OnCalculationButtonClick">Calculate</button>
+}
+
+@if (calculatorResult != null)
+{
+    <p />
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Zone</th>
+                <th>Range</th>
+            </tr>
+            </thead>
+            <tbody>
+            
+            @foreach (var zone in calculatorResult.Zones)
+            {
+                <tr>
+                    <td title="@zone.Description">@zone.Name</td>
+                    <td>@zone.Minimum-@zone.Maximum</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+        <dl class="row">
+            @foreach (var zone in calculatorResult.Zones)
+            {
+                <dt class="col-sm-3" title="@zone.Description">@zone.Name</dt>
+                <dd class="col-sm-9">@zone.Minimum-@zone.Maximum</dd>
+            }
+        </dl>
     </div>
 }
 
-<button class="btn btn-primary" @onclick="CalculateZones">Calculate</button>
-
-@*<div>    
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Zone</th>
-                <th>HF Range</th>
-            </tr>            
-        </thead>
-        <tbody>
-            <tr>
-                <td>Zone 1</td>
-                <td></td>
-            </tr>
-
-            <tr>
-                <td>Zone 2</td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <dl class="row">
-        <dt class="col-sm-3">Zone 1</dt>
-        <dd class="col-sm-9">5-7</dd>
-
-        <dt class="col-sm-3">Zone 2</dt>
-        <dd class="col-sm-9">9-10</dd>
-    </dl>
-</div>*@
-
 @code {
+    private IZonesCalculatorFactory calculatorFactory;
 
-    IZonesCalculatorFactory calculatorFactory;
+    private IZonesCalculator selectedCalculator;
 
-    IZonesCalculator calculator ;
+    private Dictionary<Guid, string> calculatorInputValues;
 
-    private int? pulse;
-    private string selectedCalculator;
-
-    Dictionary<Guid, string> inputValues;
-
-    private void CalculateZones()
-    {
-        
-    }
+    private ZonesCalculatorResult calculatorResult;
 
     private void OnSelectCalculator(ChangeEventArgs eventArgs)
     {
+        if (Guid.TryParse(eventArgs.Value?.ToString(), out var calculatorId))
+        {
+            selectedCalculator = calculatorFactory.Create(calculatorId);
 
+            calculatorInputValues.Clear();
+            foreach (var zoneCalculatorInputValueDescription in selectedCalculator.Description.InputValueDescriptions)
+            {
+                calculatorInputValues[zoneCalculatorInputValueDescription.Id] = string.Empty;
+            }
+        }
     }
 
     protected override async Task OnInitializedAsync()
     {
-        this.calculatorFactory = new ZonesCalculatorFactory();
+        calculatorInputValues = new Dictionary<Guid, string>();
+        calculatorFactory = new ZonesCalculatorFactory();
 
-        this.calculator = new RunMaximumHeartRateZonesCalculator();
-        this.inputValues = new Dictionary<Guid, string>();
+        await Task.CompletedTask;
+    }
 
+    private void OnCalculationButtonClick(MouseEventArgs obj)
+    {
+        var inputValues = new List<ZonesCalculatorInputValue>();
 
-        foreach (var zoneCalculatorInputValueDescription in this.calculator.Description.InputValueDescriptions)
+        foreach (var calculatorInputValue in calculatorInputValues)
         {
-            this.inputValues.Add(zoneCalculatorInputValueDescription.Id, null);
+            var zonesCalculatorInputValue = new ZonesCalculatorInputValue { Id = calculatorInputValue.Key, Value = calculatorInputValue.Value, };
+            inputValues.Add(zonesCalculatorInputValue);
         }
 
-        //await Task.FromResult();
+        calculatorResult = selectedCalculator.Calculate(inputValues);
     }
+
+
 }

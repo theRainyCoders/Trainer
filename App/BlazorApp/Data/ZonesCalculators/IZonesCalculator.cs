@@ -1,5 +1,6 @@
 ﻿namespace TheRainyCoders.Trainer.BlazorApp.Data.ZonesCalculators
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     /// <summary>
@@ -13,14 +14,14 @@
         ZonesCalculatorDescription Description { get; }
 
         /// <summary>
-        ///     Calculate the zones by the given input values.
+        ///     Calculate the zones by the given inputValues values.
         /// </summary>
-        /// <param name="input">
-        ///     The input.
+        /// <param name="inputValues">
+        ///     The input values.
         /// </param>
         /// <returns>
         ///     The <see cref="ZonesCalculatorResult" />.
         /// </returns>
-        ZonesCalculatorResult Calculate(ZonesCalculatorInput input);
+        ZonesCalculatorResult Calculate(IReadOnlyCollection<ZonesCalculatorInputValue> inputValues);
     }
 }
