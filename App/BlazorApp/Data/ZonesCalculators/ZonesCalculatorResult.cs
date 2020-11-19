@@ -1,7 +1,9 @@
 ﻿namespace TheRainyCoders.Trainer.BlazorApp.Data.ZonesCalculators
 {
-    internal class ZonesCalculatorResult    
+    /// <summary>
+    ///     Class that represents the result of calculated zones.
+    /// </summary>
+    internal class ZonesCalculatorResult
     {
-
     }
 }

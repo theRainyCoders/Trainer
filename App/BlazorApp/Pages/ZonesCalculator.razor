@@ -1,7 +1,7 @@
 ﻿@page "/zones-calculator"
 @using TheRainyCoders.Trainer.BlazorApp.Data.ZonesCalculators
 @using System.Reflection.Metadata
-@using TheRainyCoders.Trainer.BlazorApp.Data.ZonesCalculators.Calculators
+@using TheRainyCoders.Trainer.BlazorApp.Data.ZonesCalculators.Calculators.PowerAndPace
 <h3>HF - ZonesCalculator</h3>
 
 
@@ -76,7 +76,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        this.calculator = new PowerAndPaceRunMaxHR();
+        this.calculator = new RunMaximumHeartRateZonesCalculator();
         this.inputValues = new Dictionary<Guid, string>();
 
 

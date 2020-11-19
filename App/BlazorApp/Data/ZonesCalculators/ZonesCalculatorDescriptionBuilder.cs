@@ -2,38 +2,41 @@
 {
     using System;
 
+    /// <summary>
+    ///     Builder to create a description of a <see cref="IZonesCalculator" />.
+    /// </summary>
     internal class ZonesCalculatorDescriptionBuilder : IZonesCalculatorDescriptionBuilder
     {
-        public ZonesCalculatorDescriptionBuilder()
+        /// <summary>
+        ///     Gets or sets the description.
+        /// </summary>
+        protected ZonesCalculatorDescription Description { get; set; }
+
+        /// <inheritdoc />
+        public virtual IZonesCalculatorDescriptionBuilder AddDescription(
+            Guid id,
+            string name,
+            string? description = null)
         {
-            this.Description = new ZonesCalculatorDescription();
+            this.Description = new ZonesCalculatorDescription(id, name, description);
+            return this;
         }
 
-        public ZonesCalculatorDescription Description { get; protected set; }
-
-        public virtual IZonesCalculatorDescriptionBuilder AddDescription(Guid id, string name, string description = null)
+        /// <inheritdoc />
+        public virtual IZonesCalculatorDescriptionBuilder AddInputValueDescription(
+            Guid id,
+            string name,
+            string? description = null)
         {
-            this.Description.Id = id;
-            this.Description.Name = name;
-            this.Description.Description = description;
+            var inputValueDescription = new ZoneCalculatorInputValueDescription(id, name, description);
+
+            this.Description.InputValueDescriptions.Add(inputValueDescription);
 
             return this;
         }
 
-
-        public virtual IZonesCalculatorDescriptionBuilder AddInputValueDescription(Guid id, string name, string description = null)
-        {
-            var inputValueDescription = new ZoneCalculatorInputValueDescription
-                                            {
-                                                Id = id, Name = name, Description = description
-                                            };
-
-            this.Description.InputValueDescriptions2.Add(inputValueDescription);
-
-            return this;
-        }
-
-        public virtual IZonesCalculatorDescription Build()
+        /// <inheritdoc />
+        public virtual ZonesCalculatorDescription Build()
         {
             return this.Description;
         }

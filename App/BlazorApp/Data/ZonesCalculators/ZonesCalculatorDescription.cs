@@ -3,21 +3,45 @@
     using System;
     using System.Collections.Generic;
 
-    internal class ZonesCalculatorDescription : IZonesCalculatorDescription
+    using TheRainyCoders.Commonplace.Data;
+
+    /// <summary>
+    ///     Class that represents a zones calculator description.
+    /// </summary>
+    internal struct ZonesCalculatorDescription : IReadonlyDescribe
     {
-        public ZonesCalculatorDescription()
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ZonesCalculatorDescription" /> struct.
+        /// </summary>
+        /// <param name="id">
+        ///     The unique id of the zone calculator.
+        /// </param>
+        /// <param name="name">
+        ///     The name.
+        /// </param>
+        /// <param name="description">
+        ///     The description.
+        /// </param>
+        public ZonesCalculatorDescription(Guid id, string name, string? description)
         {
-            this.InputValueDescriptions2 = new List<ZoneCalculatorInputValueDescription>();
+            this.Id = id;
+            this.Name = name;
+            this.Description = description;
+            this.InputValueDescriptions = new List<ZoneCalculatorInputValueDescription>();
         }
 
-        public Guid Id { get; set; }
+        /// <inheritdoc />
+        public Guid Id { get; }
 
-        public string Name { get; set; }
+        /// <inheritdoc />
+        public string Name { get; }
 
-        public IReadOnlyCollection<ZoneCalculatorInputValueDescription> InputValueDescriptions => this.InputValueDescriptions2;
+        /// <inheritdoc />
+        public string? Description { get; }
 
-        public string Description { get; set; }
-
-        public List<ZoneCalculatorInputValueDescription> InputValueDescriptions2;
+        /// <summary>
+        ///     Gets the input value descriptions.
+        /// </summary>
+        public List<ZoneCalculatorInputValueDescription> InputValueDescriptions { get; }
     }
 }
