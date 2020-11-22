@@ -1,7 +1,9 @@
 ﻿@page "/zones-calculator"
 @using TheRainyCoders.Trainer.BlazorApp.Data.ZonesCalculators
 
-<h3>Zone Calculators</h3>
+@inject IStringLocalizer<ZonesCalculator> Localizer
+
+<h3>@Localizer["Headline"]</h3>
 
 <div class="form-group">
     <label for="calculatorList">Calculator:</label>

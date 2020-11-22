@@ -19,4 +19,10 @@
   <ItemGroup>
     <AdditionalFiles Include="../stylecop.json" />
   </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Pages\ZonesCalculator.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>
