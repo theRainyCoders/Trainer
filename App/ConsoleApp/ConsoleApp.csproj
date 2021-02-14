@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+
+    <AssemblyName>TheRainyCoders.Trainer.ConsoleApp</AssemblyName>
+    <RootNamespace>TheRainyCoders.Trainer.ConsoleApp</RootNamespace>
+
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <!-- We use the value of AssemblyName to declare the value of the attribute -->
+      <_Parameter1>$(AssemblyName).Tests</_Parameter1> 
+    </AssemblyAttribute>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TheRainyCoders.Commonplace" Version="0.0.3" />
+    <PackageReference Include="TheRainyCoders.CSharp.Development.Settings" Version="1.0.1">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="../stylecop.json" />
+  </ItemGroup>
+
+</Project>

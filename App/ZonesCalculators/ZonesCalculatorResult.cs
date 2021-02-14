@@ -1,11 +1,11 @@
-﻿namespace TheRainyCoders.Trainer.BlazorApp.Data.ZonesCalculators
+﻿namespace TheRainyCoders.Trainer.ZonesCalculators
 {
     using System.Collections.Generic;
 
     /// <summary>
     ///     Class that represents the result of calculated zones.
     /// </summary>
-    internal class ZonesCalculatorResult
+    public class ZonesCalculatorResult
     {
         /// <summary>
         ///     Gets the zones.

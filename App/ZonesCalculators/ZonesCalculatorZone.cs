@@ -1,11 +1,11 @@
-﻿namespace TheRainyCoders.Trainer.BlazorApp.Data.ZonesCalculators
+﻿namespace TheRainyCoders.Trainer.ZonesCalculators
 {
     using System;
 
     /// <summary>
     ///     Class to describe a calculated zone.
     /// </summary>
-    internal struct ZonesCalculatorZone
+    public struct ZonesCalculatorZone
     {
         /// <summary>
         ///     Gets or sets the unique id of the zone.

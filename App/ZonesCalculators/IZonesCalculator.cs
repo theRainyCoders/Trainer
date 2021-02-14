@@ -1,4 +1,4 @@
-﻿namespace TheRainyCoders.Trainer.BlazorApp.Data.ZonesCalculators
+﻿namespace TheRainyCoders.Trainer.ZonesCalculators
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -6,7 +6,7 @@
     /// <summary>
     ///     Interface that describes a zone calculator.
     /// </summary>
-    internal interface IZonesCalculator : IValidatableObject
+    public interface IZonesCalculator : IValidatableObject
     {
         /// <summary>
         ///     Gets the description.

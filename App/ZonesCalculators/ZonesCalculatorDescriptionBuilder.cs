@@ -1,11 +1,11 @@
-﻿namespace TheRainyCoders.Trainer.BlazorApp.Data.ZonesCalculators
+﻿namespace TheRainyCoders.Trainer.ZonesCalculators
 {
     using System;
 
     /// <summary>
     ///     Builder to create a description of a <see cref="IZonesCalculator" />.
     /// </summary>
-    internal class ZonesCalculatorDescriptionBuilder : IZonesCalculatorDescriptionBuilder
+    public class ZonesCalculatorDescriptionBuilder : IZonesCalculatorDescriptionBuilder
     {
         /// <summary>
         ///     Gets or sets the description.

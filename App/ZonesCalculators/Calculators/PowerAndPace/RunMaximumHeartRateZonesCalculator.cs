@@ -1,4 +1,4 @@
-﻿namespace TheRainyCoders.Trainer.BlazorApp.Data.ZonesCalculators.Calculators.PowerAndPace
+﻿namespace TheRainyCoders.Trainer.ZonesCalculators.Calculators.PowerAndPace
 {
     using System;
     using System.Collections.Generic;
@@ -65,7 +65,7 @@
                     "Power&Pace - Run - Maximum Heart Rate").AddInputValueDescription(
                     Guid.Parse("{B0C6D2A6-65FB-4954-B845-208180BECA08}"),
                     "Maximum Heart Rate");
-            
+
             return descriptionBuilder.Build();
         }
     }

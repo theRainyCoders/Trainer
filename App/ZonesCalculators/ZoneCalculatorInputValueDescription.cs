@@ -1,13 +1,12 @@
-﻿namespace TheRainyCoders.Trainer.BlazorApp.Data.ZonesCalculators
+﻿namespace TheRainyCoders.Trainer.ZonesCalculators
 {
     using System;
-
     using TheRainyCoders.Commonplace.Data;
 
     /// <summary>
     ///     Class that represent the description of a zone calculator input value.
     /// </summary>
-    internal struct ZoneCalculatorInputValueDescription : IReadonlyDescribe
+    public struct ZoneCalculatorInputValueDescription : IReadonlyDescribe
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="ZoneCalculatorInputValueDescription" /> struct.

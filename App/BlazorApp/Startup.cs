@@ -47,7 +47,7 @@ namespace TheRainyCoders.Trainer.BlazorApp
 
             services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-            var supportedCultures = new List<CultureInfo> { new CultureInfo("en"), new CultureInfo("de") };
+            var supportedCultures = new List<CultureInfo> { new ("en"), new ("de") };
             services.Configure<RequestLocalizationOptions>(
                 options =>
                     {

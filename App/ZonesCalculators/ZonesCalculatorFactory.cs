@@ -1,4 +1,4 @@
-﻿namespace TheRainyCoders.Trainer.BlazorApp.Data.ZonesCalculators
+﻿namespace TheRainyCoders.Trainer.ZonesCalculators
 {
     using System;
     using System.Collections.Generic;
@@ -7,7 +7,7 @@
     /// <summary>
     ///     Factory to create instances of the available <see cref="IZonesCalculator" />.
     /// </summary>
-    internal class ZonesCalculatorFactory : IZonesCalculatorFactory
+    public class ZonesCalculatorFactory : IZonesCalculatorFactory
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="ZonesCalculatorFactory" /> class.

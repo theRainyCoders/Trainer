@@ -1,4 +1,4 @@
-﻿namespace TheRainyCoders.Trainer.BlazorApp.Data.ZonesCalculators
+﻿namespace TheRainyCoders.Trainer.ZonesCalculators
 {
     using System;
     using System.Collections.Generic;
@@ -6,7 +6,7 @@
     /// <summary>
     ///     Interface that describes a factory for creating <see cref="IZonesCalculator" />.
     /// </summary>
-    internal interface IZonesCalculatorFactory
+    public interface IZonesCalculatorFactory
     {
         /// <summary>
         ///     Get the description of all available zone calculators.
