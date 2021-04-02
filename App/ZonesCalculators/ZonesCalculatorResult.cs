@@ -8,8 +8,13 @@
     public class ZonesCalculatorResult
     {
         /// <summary>
-        ///     Gets the zones.
+        ///     Gets the calculated zones.
         /// </summary>
-        public List<ZonesCalculatorZone> Zones { get; } = new List<ZonesCalculatorZone>();
+        public List<ZonesCalculatorZone> Zones { get; } = new ();
+
+        /// <summary>
+        ///     Gets or sets the unit.
+        /// </summary>
+        public string Unit { get; set; }
     }
 }

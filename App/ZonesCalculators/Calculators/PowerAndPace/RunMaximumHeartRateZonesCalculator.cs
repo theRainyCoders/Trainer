@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
 
     /// <summary>
     ///     Power and Pace zone calculator that calculates heart rate zones by the maximum heart rate.
@@ -13,6 +14,10 @@
         ///     Get the description of the calculator.
         /// </summary>
         public static readonly ZonesCalculatorDescription Description;
+
+        internal static readonly Guid CalculatorId = Guid.Parse("{B08E13BD-EA30-446D-A105-3206A0C73DB9}");
+
+        internal static readonly Guid MaxHeartRateInputValueId = Guid.Parse("{B0C6D2A6-65FB-4954-B845-208180BECA08}");
 
         /// <summary>
         ///     Initializes static members of the <see cref="RunMaximumHeartRateZonesCalculator" /> class.
@@ -34,19 +39,42 @@
         /// <inheritdoc />
         public ZonesCalculatorResult Calculate(IReadOnlyCollection<ZonesCalculatorInputValue> inputValues)
         {
-            var zoneOne = new ZonesCalculatorZone
-                              {
-                                  Id = Guid.NewGuid(),
-                                  Name = "DLext",
-                                  Minimum = 0,
-                                  Maximum = 1,
-                                  Description = "Info desc.",
-                              };
+            var maxHeartRateInputValue = inputValues.First(x => x.Id == MaxHeartRateInputValueId);
+            var maxHeartRate = int.Parse(maxHeartRateInputValue.Value);
 
-            var result = new ZonesCalculatorResult();
-            result.Zones.Add(zoneOne);
+            var resultBuilder = new ZoneCalculatorResultBuilder();
+            resultBuilder.SetUnit("S/m").AddZone(
+                    "DLreg",
+                    0,
+                    CalculationHelper.CalculateAndRoundUp(maxHeartRate, 60),
+                    "Regenerativer Dauerlauf <= 60% HFmax")
+                .AddZone(
+                    "DLext",
+                    CalculationHelper.CalculateAndRoundDown(maxHeartRate, 61),
+                    CalculationHelper.CalculateAndRoundUp(maxHeartRate, 75),
+                    "Extensiver Dauerlauf 61-75% HFmax")
+                .AddZone(
+                    "DLint",
+                    CalculationHelper.CalculateAndRoundDown(maxHeartRate, 76),
+                    CalculationHelper.CalculateAndRoundUp(maxHeartRate, 85),
+                    "Intensiver Dauerlauf 76-85% HFmax")
+                .AddZone(
+                    "DLTempo",
+                    CalculationHelper.CalculateAndRoundDown(maxHeartRate, 86),
+                    CalculationHelper.CalculateAndRoundUp(maxHeartRate, 95),
+                    "Tempdauerlauf 86-95% HFmax")
+                .AddZone(
+                    "TText",
+                    CalculationHelper.CalculateAndRoundDown(maxHeartRate, 95),
+                    CalculationHelper.CalculateAndRoundUp(maxHeartRate, 100),
+                    "Tempdauerlauf >95% HFmax")
+                .AddZone(
+                    "TTint",
+                    CalculationHelper.CalculateAndRoundDown(maxHeartRate, 95),
+                    CalculationHelper.CalculateAndRoundUp(maxHeartRate, 100),
+                    "Tempdauerlauf >95% HFmax");
 
-            return result;
+            return resultBuilder.Build();
         }
 
         /// <summary>
@@ -60,11 +88,8 @@
             var descriptionBuilder = new ZonesCalculatorDescriptionBuilder();
 
             descriptionBuilder
-                .AddDescription(
-                    Guid.Parse("{B08E13BD-EA30-446D-A105-3206A0C73DB9}"),
-                    "Power&Pace - Run - Maximum Heart Rate").AddInputValueDescription(
-                    Guid.Parse("{B0C6D2A6-65FB-4954-B845-208180BECA08}"),
-                    "Maximum Heart Rate");
+                .AddDescription(CalculatorId, "Power&Pace - Run - Maximum Heart Rate")
+                .AddInputValueDescription(MaxHeartRateInputValueId, "Maximum Heart Rate");
 
             return descriptionBuilder.Build();
         }
