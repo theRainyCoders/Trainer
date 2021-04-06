@@ -26,7 +26,7 @@
         </div>
     }
 
-    <button class="btn btn-primary" @onclick="OnCalculationButtonClick" type="submit">Calculate</button>
+    <button class="btn btn-primary" @onclick="OnCalculationButtonClick">Calculate</button>
 }
 
 @if (calculatorResult != null)
@@ -38,7 +38,6 @@
             <tr>
                 <th>Zone</th>
                 <th>Range</th>
-                <th>Description</th>
             </tr>
             </thead>
             <tbody>
@@ -47,12 +46,19 @@
             {
                 <tr>
                     <td title="@zone.Description">@zone.Name</td>
-                    <td>@zone.Minimum-@zone.Maximum&nbsp;@calculatorResult.Unit</td>
-                    <td>@zone.Description</td>
+                    <td>@zone.Minimum-@zone.Maximum</td>
                 </tr>
             }
             </tbody>
         </table>
+
+        <dl class="row">
+            @foreach (var zone in calculatorResult.Zones)
+            {
+                <dt class="col-sm-3" title="@zone.Description">@zone.Name</dt>
+                <dd class="col-sm-9">@zone.Minimum-@zone.Maximum</dd>
+            }
+        </dl>
     </div>
 }
 
